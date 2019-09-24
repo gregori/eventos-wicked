@@ -159,8 +159,6 @@ import { mapGetters } from "vuex";
 import { Tabs } from "@/components";
 import DashboardSteps from '@/components/DashboardSteps.vue'
 import store from '@/store';
-import firebase from '@/plugins/firebase';
-import firestore from '@/plugins/firestore';
 import { required, email } from 'vuelidate/lib/validators'
 import ImageUpload from '@/components/ImageUpload.vue'
 import { CATEGORY_JSON } from '@/config.js';
@@ -258,16 +256,6 @@ export default {
 
     sendPasswordResetEmail() {
       this.sending = true
-      firebase.auth().sendPasswordResetEmail(this.form.email).then(() => {
-        this.sending = false
-        store.dispatch('alert/success', this.$t('auth.successfuly-password-reset'));
-      }).catch((error) => {
-        this.sending = false
-        let translationKey = `errors.${error.code}`;
-        let msg = error.message;
-        if (this.$te(translationKey)) msg = this.$t(translationKey);
-        store.dispatch('alert/error', msg);
-      });
     },
 
     commitProfileImage(photoURL) {
@@ -338,30 +326,6 @@ export default {
 
 
   mounted() {
-    let usersRef = firestore.collection('users'),
-    miniCourseRef = firestore.collection('courses');
-
-    miniCourseRef.get()
-      .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          let catCount = 0;
-          usersRef.where('miniCourse', '==', doc.id).get()
-            .then(function(snapshot) {
-              snapshot.forEach(function(doc) {
-                catCount++;
-              });
-              let data = doc.data();
-              data.id = doc.id;
-              data.participants = catCount;
-              this.categories.push(data)
-            }.bind(this));
-        }.bind(this));
-
-        this.commit();
-      }.bind(this))
-      .catch(function(error) {
-        console.log("Error getting documents: ", error);
-      });
   },
 
 

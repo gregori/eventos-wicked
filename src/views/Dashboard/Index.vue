@@ -49,8 +49,6 @@ import { mapGetters } from "vuex";
 import { Tabs } from "@/components";
 import DashboardSteps from '@/components/DashboardSteps.vue'
 import store from '@/store';
-import firebase from '@/plugins/firebase';
-import firestore from '@/plugins/firestore';
 import { required, email } from 'vuelidate/lib/validators'
 
 export default {

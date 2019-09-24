@@ -15,7 +15,6 @@ import Vue from 'vue'
  */
 import './plugins/vuex';
 import store from './store';
-import firebase from './plugins/firebase';
 import { i18n } from './plugins/vue-i18n';
 import { router } from './plugins/vue-router';
 import './plugins/vuelidate';
@@ -31,14 +30,6 @@ import MaterialKit from '@/plugins/material-kit';
  * Last but not least, we import the main application.
  */
 import App from './App'
-
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    store.dispatch('auth/login', user);
-  } else {
-    store.dispatch('auth/logout');
-  }
-});
 
 Vue.config.productionTip = false;
 

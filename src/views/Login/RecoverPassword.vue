@@ -57,7 +57,6 @@ import VLayout from '@/layout/Landing.vue';
 import ProviderButtons from '@/components/ProviderButtons.vue'
 import LoginCard from '@/components/cards/LoginCard.vue'
 import { required, email } from 'vuelidate/lib/validators'
-import firebase from '@/plugins/firebase';
 import store from '@/store';
 
 export default {
@@ -119,16 +118,6 @@ export default {
     },
 
     commitForm () {
-      firebase.auth().sendPasswordResetEmail(this.form.email).then(() => {
-        this.sending = false
-        store.dispatch('alert/success', this.$t('auth.successfuly-send-recover-email'));
-      }).catch((error) => {
-        this.sending = false
-        let translationKey = `errors.${error.code}`;
-        let msg = error.message;
-        if (this.$te(translationKey)) msg = this.$t(translationKey);
-        store.dispatch('alert/error', msg);
-      });
     },
 
     validateForm () {

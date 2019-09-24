@@ -102,8 +102,6 @@
 
 <script>
 import VLayout from '@/layout/Register.vue';
-import firebase from '@/plugins/firebase';
-import firestore from '@/plugins/firestore';
 import { required, email } from 'vuelidate/lib/validators'
 import DashboardSteps from '@/components/DashboardSteps.vue'
 import ImageUpload from '@/components/ImageUpload.vue'

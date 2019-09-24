@@ -49,7 +49,6 @@
 </template>
 
 <script>
-import firebase from '@/plugins/firebase';
 import { LoginCard } from "@/components";
 import { required } from 'vuelidate/lib/validators';
 import store from '@/store';
@@ -142,32 +141,8 @@ export default {
 
   methods:{
     uploadImg(e) {
-      this.Img = e.target.files[0];
-      let userUid = firebase.auth().currentUser.uid;
-      const storageRef = firebase.storage().ref('robotImg').child(userUid).child(this.Img.name);
-      this.ImgPath = storageRef.fullPath;
-      this.prg = true;
-      storageRef.put(this.Img).then(function() {
-        this.showB = true;
-        document.getElementById("prgBar").remove();
-      }.bind(this));
     },
     registerRobot (){
-      const dbRef = firebase.database().ref('robot');
-      let newUserRef = dbRef.push().key;
-      let user = firebase.auth().currentUser.uid;
-      dbRef.child(newUserRef).set({
-        user: user,
-        name: this.form.name,
-        category: this.form.category,
-        img: this.ImgPath !== null && this.form.ImgPath !== '' ? this.ImgPath : 'noImg'
-      });
-      let msg = "Robo cadastrado com sucesso!!";
-      store.dispatch('alert/success', msg);
-      setTimeout(() => store.dispatch('alert/clear'), 3000);
-      this.form.name = "";
-      this.form.category = "";
-      this.form.Img = null;
     },
 
   }

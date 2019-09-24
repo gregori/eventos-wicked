@@ -117,7 +117,6 @@
 <script>
 import VLayout from '@/layout/Register.vue';
 import Vue from 'vue';
-import firebase from '@/plugins/firebase';
 import { required, maxLength, minLength } from 'vuelidate/lib/validators'
 import DashboardSteps from '@/components/DashboardSteps.vue'
 import ImageUpload from '@/components/ImageUpload.vue'
@@ -201,16 +200,6 @@ export default {
 
     sendPasswordResetEmail() {
       this.sending = true
-      firebase.auth().sendPasswordResetEmail(this.form.email).then(() => {
-        this.sending = false
-        store.dispatch('alert/success', this.$t('auth.successfuly-password-reset'));
-      }).catch((error) => {
-        this.sending = false
-        let translationKey = `errors.${error.code}`;
-        let msg = error.message;
-        if (this.$te(translationKey)) msg = this.$t(translationKey);
-        store.dispatch('alert/error', msg);
-      });
     },
 
     commitProfileImage(photoURL) {

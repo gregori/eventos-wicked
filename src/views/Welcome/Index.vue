@@ -42,7 +42,7 @@
                 O Summit de Robótica da Católica SC é um projeto integrador dos cursos de Engenharia de Software e Sistemas de Informação da Católica de Santa Catarina e este evento é dividido em dois projetos:
                 <ul>
                   <li>
-                  Minicursos são para qualquer pessoa que tenha interesse na área de robótica e 
+                  Minicursos são para qualquer pessoa que tenha interesse na área de robótica e
                   não tem condições de montar seu robô, estes minicursos irão acontecer nos dias 12/12, 13/12 das 19h até as 22h,
                   a idéia dos minicursos é fomentar a robótica nos tempos atuais e promover a construção de robôs
                   que irão para participar no 1º Summit de Robótica da Católica SC
@@ -100,7 +100,6 @@
 
 <script>
 import VLayout from '@/layout/Landing.vue';
-import firestore from '@/plugins/firestore';
 
 export default {
   bodyClass: 'landing-page',
@@ -134,17 +133,6 @@ export default {
     }
   },
   mounted() {
-    let usersRef = firestore.collection('users');
-    var allCities = usersRef.get()
-    .then(snapshot => {
-      console.log(Object.values(snapshot.docs).length)
-      // snapshot.forEach(doc => {
-      //   console.log(doc.id, '=>', doc.data());
-      // });
-    })
-    .catch(err => {
-      console.log('Error getting documents', err);
-    });
   },
 };
 </script>

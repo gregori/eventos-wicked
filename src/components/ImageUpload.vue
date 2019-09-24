@@ -32,7 +32,6 @@
 </template>
 
 <script>
-import firebase from '@/plugins/firebase';
 import store from '@/store';
 
 export default {
@@ -98,33 +97,7 @@ export default {
     },
 
     uploadFile(event) {
-      var storageRef = firebase.storage().ref(this.baseDir);
-      this.reset();
-      this.theFile = event.target.files[0];
-      this.uploadTask = storageRef.child(this.theFile.name).put(this.theFile);
-
-      this.uploadTask.on('state_changed', (snapshot) => {
-        // Observe state change events such as progress, pause, and resume
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        this.uploadProgress = progress;
-      }, (error) => {
-        this.uploadTask = null;
-        let translationKey = `errors.${error.code}`;
-        let msg = error.message;
-        if (this.$te(translationKey)) msg = this.$t(translationKey);
-        store.dispatch('alert/error', msg);
-      }, () => {
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-        this.uploadTask.snapshot.ref.getDownloadURL()
-          .then((downloadURL) => {
-            this.updatedImageUrl = downloadURL;
-            this.onSuccess(downloadURL);
-          });
-        this.uploadTask = null;
-      });
-    },
+    }
   },
 }
 </script>

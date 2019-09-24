@@ -69,7 +69,6 @@ import VLayout from '@/layout/Landing.vue';
 import ProviderButtons from '@/components/ProviderButtons.vue'
 import LoginCard from '@/components/cards/LoginCard.vue'
 import { required, email, minLength } from 'vuelidate/lib/validators'
-import firebase from '@/plugins/firebase';
 import store from '@/store';
 
 export default {
@@ -134,17 +133,7 @@ export default {
     },
 
     loginWithEmailAndPassword () {
-      firebase.auth().signInWithEmailAndPassword(this.form.email, this.form.password)
-        .then(() => {
-          this.sending = false
-        })
-        .catch(error => {
-          this.sending = false
-          let translationKey = `errors.${error.code}`;
-          let msg = error.message;
-          if (this.$te(translationKey)) msg = this.$t(translationKey);
-          store.dispatch('alert/error', msg);
-        })
+
     },
 
     validateUser () {
