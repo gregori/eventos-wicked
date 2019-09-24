@@ -5,7 +5,6 @@ export const CATEGORY_JSON = [
     label: "Sumô",
     hasMiniCourse: true,
     categorias: [
-      {name: "Sumô mini - 500g Junior", ruleContent: '/rules/sumo_rule.pdf', miniCourse: true},
       {name: "Sumô mini - 500g Autônomo", ruleContent: '/rules/sumo_rule.pdf', miniCourse: false},
       {name: "Sumô 1kg Lego", ruleContent: '/rules/sumo_rule.pdf', miniCourse: false},
       {name: "Sumô 3kg Autônomo", ruleContent: '/rules/sumo_rule.pdf', miniCourse: false},
@@ -31,7 +30,7 @@ export const CATEGORY_JSON = [
     label: "Combate",
     hasMiniCourse: true,
     categorias: [
-      {name: "Antweight Junior - 1lb (454g)", ruleContent: '/rules/fight_rules.pdf', miniCourse: true},
+      {name: "Fairyweight - 150g", ruleContent: '/rules/fight_rules.pdf', miniCourse: false},
       {name: "Antweight - 1lb (454g)", ruleContent: '/rules/fight_rules.pdf', miniCourse: false},
       {name: "Beetleweight - 3lb (1,36kg)", ruleContent: '/rules/fight_rules.pdf', miniCourse: false},
       {name: "Hobbyweight - 12lb (5,44kg)", ruleContent: '/rules/fight_rules.pdf', miniCourse: false},
@@ -41,7 +40,6 @@ export const CATEGORY_JSON = [
     label: "Futebol",
     hasMiniCourse: false,
     categorias: [
-      {name: "Simulation 2D", ruleContent: '/rules/futebol_2d.pdf', miniCourse: false},
       {name: "Very Small size League", ruleContent: '/rules/', miniCourse: false},
       {name: "VSS RC", ruleContent: '/rules/futebol_vss.pdf', miniCourse: false},
     ]

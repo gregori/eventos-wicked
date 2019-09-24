@@ -10,19 +10,19 @@
             <md-tab id="tab-home" md-label="Informações Gerais" md-icon="home">
               <h1>Informações Gerais</h1>
               <h3>Programação</h3>
-              <h4>14/12 - Sexta-feira</h4>
+              <h4>15/12 - Sexta-feira</h4>
               09h - Início do Check-in<br>
               10h - Início da inspeção de segurança<br>
               12h - Término da inspeção de segurança<br>
               14h - Início das competições<br>
               21h - Término das atividades do dia<br>
-              <h4>15/12 - Sábado</h4>
+              <h4>16/12 - Sábado</h4>
               09h - Início das competições<br>
               12h - Intervalo<br>
               14h - Reinício das competições<br>
               21h - Término das atividades do dia<br>
 
-              <h4>16/12 - Domingo</h4>
+              <h4>17/12 - Domingo</h4>
               09h - Início das competições<br>
               12h - Intervalo<br>
               14h - Reinício das competições<br>
@@ -32,10 +32,11 @@
               <h1>Localização</h1>
               <center>
                 <p>
-                  A competição irá acontecer nos dias 14/12/2018, 15/12/2018 e 16/12/2018 das 9h às 21h no campus da Católica de Santa Catarina em Jaraguá do Sul, blocos F e G.
+                  A competição irá acontecer nos dias 14/12/2018, 15/12/2018 e 16/12/2018 das 9h às 21h no campus da Católica de Santa Catarina em Joinville, blocos A.
                 </p>
+                <!-- <iframe src="" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe> -->
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.64076339259!2d-49.1154960627387!3d-26.46730626569736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94de940dbec22f4d%3A0xf2864ccc867a7dc1!2sCentro+Universit%C3%A1rio+-+Cat%C3%B3lica+de+Santa+Catarina+em+Jaragu%C3%A1+do+Sul!5e0!3m2!1spt-BR!2sbr!4v1541540744701"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3576.6849155931427!2d-48.8533378849678!3d-26.304312583393312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deb047b2a98c67%3A0x8101cf18a613c42a!2sCentro%20Universit%C3%A1rio%20-%20Cat%C3%B3lica%20de%20Santa%20Catarina%20em%20Joinville!5e0!3m2!1spt-BR!2sbr!4v1569365638144!5m2!1spt-BR!2sbr"
                   frameborder="0"
                   style="
                   border:0;
@@ -48,6 +49,7 @@
               </center>
             </md-tab>
             <md-tab id="tab-hotel" md-label="Transporte" md-icon="commute">
+              <!-- FIXME: Remove isso, não precisa mais -->
               <h1>Transporte</h1>
               <center>
                 <img src="https://viajare.com.br/wp-content/uploads/2017/06/logo-MAIN.png" alt="Viajare Turismo" class="img-responsive"/>
@@ -66,6 +68,7 @@
               </p>
             </md-tab>
             <md-tab id="tab-food" md-label="Alimentação" md-icon="local_dining">
+              <!-- FIXME: Remove isso, não precisa mais -->
               <h1>Alimentação</h1>
               <p>
                 <center>
@@ -95,68 +98,40 @@
             </md-tab>
             <md-tab id="tab-transp" md-label="Estadia" md-icon="hotel">
               <h1>Estadia</h1>
-              <p>
-                <strong>Para as equipes que virão de mais longe, foi formada uma parceria com hotéis, os quais irão fornecer preços especiais aos competidores. Estão participando desse convênio os seguintes hotéis:</strong>
-              </p>
-              <h4>Hotel Itajara</h4>
-              <p>
-                Rua Exp. Gumercindo da Silva 237 – Centro – Jaraguá do Sul - (47) 2107-3799
-              </p>
-              <p>
-                <a href="http://www.hotelitajara.com.br">www.hotelitajara.com.br</a>
-              </p>
-              <p>
-                Faça sua reserva até o dia 13/12/18 através do nosso site e obtenha valores a partir de:
-              </p>
-              <p>
-                R$ 150,00 para apartamento individual
-              </p>
-              <p>
-                R$ 210,00 para apartamento casal / duplo
-              </p>
-              <p>Acesse: https://goo.gl/XP3Mfy e insira o código da promoção: Wickedbotz</p>
-
-              <h4>Hotel Harbor Inn Jaragua</h4>
-              <p>Rua Max Wilhelm, 39 - Vila Baependi - Jaraguá do Sul - (47) 3371-2133</p>
-              <p>jaragua-do-sul.harborhoteis.com.br</p>
-              <p>R$ 127,00 para apartamento individual</p>
-              <p>R$ 150,00 para apartamento duplo / casal</p>
-              <p>R$ 210,00 para apartamento triplo</p>
-
-              <h4>Hotel Nelo</h4>
-              <p>Av. Mal. Deodoro da Fonseca, 104 - Centro, Jaraguá do Sul - (47) 3055-4100</p>
-              <p><a href="http://www.hotelnelo.com.br">www.hotelnelo.com.br</a></p>
-              <p>R$ 125,00 para apartamento econômico single</p>
-              <p>R$ 180,00 para apartamento econômico duplo</p>
-              <p>R$ 270,00 para apartamento standard triplo</p>
-              <p>R$ 342,00 para apartamento standard quadruplo</p>
-              <p>R$ 410,00 para apartamento standard quíntuplo</p>
-
-              <h4>Barra Parque Hotel</h4>
-              <p>Rua José, R. Paulo Papp, 15 - Barra do Rio Cerro, Jaraguá do Sul - (47) 3376-0700</p>
-              <p><a href="http://www.barraparquehotel.com.br">www.barraparquehotel.com.br</a></p>
-              <p>R$ 165,86 para apartamento individual</p>
-              <p>R$ 228,46 para apartamento duplo</p>
-              <p>R$ 301,48 para apartamento triplo</p>
-
-              <h4>Alojamento na escola Julius Karsten</h4>
-              <p>R. Waldemar Rau, 222 - Rau, Jaraguá do Sul - SC - (47) 99171-5494</p>
-              <!-- <p><a href="http://www.barraparquehotel.com.br">www.barraparquehotel.com.br</a></p> -->
-              <p>Sem custo, vagas limitadas</p>
-
+              <h4>Hotel Ibis Joinville</h4>
+              <p>R. 9 de Março, 806 - Centro, Joinville - SC, 89201-400 </p>
+              <h4>Mercure Joinville Prinz Hotel</h4>
+              <p>R. Otto Boehm, 525 - América, Joinville - SC, 89201-700 </p>
+              <h4>Comfort Hotel Joinville</h4>
+              <p>R. Sen. Felipe Schmidt, 460 - Centro, Joinville - SC, 89201-440 </p>
+              <h4>Hotel Tannenhof</h4>
+              <p>R. Visc. de Taunay, 340 - Atiradores, Joinville - SC, 89203-005 </p>
+              <h4>Bourbon Joinville Hotel</h4>
+              <p>R. Visc. de Taunay, 275 - Centro, Joinville - SC, 89201-420 </p>
+              <h4>Hotel Trocadero</h4>
+              <p>R. Visc. de Taunay, 185 - Centro, Joinville - SC, 89201-420 </p>
+              <h4>Alven Palace Hotel</h4>
+              <p>R. Eng. Niemeyer, 215 - Centro, Joinville - SC, 89201-130 </p>
+              <center>
+                <iframe src="https://www.google.com/maps/d/embed?mid=187QSn418vgJ__kfV_ElFFcXf3h-wQrur&hl=pt-BR"
+                  frameborder="0"
+                    style="
+                    border:0;
+                    height: 500px !important;
+                    width: 600px !important;
+                    display: block;
+                    "
+                  allowfullscreen></iframe>
+              </center>
               <br>
             </md-tab>
             <md-tab id="tab-payment" md-label="Taxa de Inscrição" md-icon="attach_money">
               <h1>Taxa de Inscrição</h1>
               <h4>O valor da inscrição é de R$ 25,00 por participante e R$ 50,00 por projeto (robô)</h4>
-              A equipe que inscrever seu time de  hockey no 1° Summit de Robótica da Católica de SC terá dois benefícios. <br />
-              <ul>
-                <li>1° benefício: o time de hockey composto por um projeto e três competidores serão gratuito, para inscrição até 07/12/2018</li>
-                <li>2° benefício: terá a isenção da taxa de inscrição de um (1) competidor e de um (1)  projeto, totalizando R$75,00 reais de economia em suas inscrições.</li>
-              </ul>
-              Estes benefícios foram concedidos pelo apoio da Menegotti que doou para a equipe Wickedbotz as chapas de aço para fazer a arena de hockey. <br /><br />
-              <p><b>&nbsp;Obs.:</b> Após a data <b>12/12</b> às inscrições terão outros valores R$50,00 por participante e R$100,00 por projeto (robô),
-              <span style="color: red; font-weight: bold"> não poderá ser inscrito após o dia 14/12 </span></p> <br />
+
+              <p>
+                <b>&nbsp;Obs.:</b> Após a data <b>31/10</b> às inscrições terão outros valores R$50,00 por participante e R$100,00 por projeto (robô),
+              <span style="color: red; font-weight: bold"> não poderá ser inscrito após o dia 11/11 </span></p> <br />
               <p>
                 Acesso ao público para ver as competições é <strong>gratuíto.</strong> <br /><br />
               </p>

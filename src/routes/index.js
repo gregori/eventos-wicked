@@ -78,16 +78,16 @@ export default [
   //     auth: true,
   //   },
   // },
-  // {
-  //   path: '/categories',
-  //   name: 'categories.index',
-  //   component: () => import('@/views/Categories/Index.vue'),
-  // },
-  // {
-  //   path: '/about',
-  //   name: 'about.index',
-  //   component: () => import('@/views/About/Index.vue'),
-  // },
+  {
+    path: '/categories',
+    name: 'categories.index',
+    component: () => import('@/views/Categories/Index.vue'),
+  },
+  {
+    path: '/about',
+    name: 'about.index',
+    component: () => import('@/views/About/Index.vue'),
+  },
   // {
   //   path: '/payment',
   //   name: 'payment.index',
@@ -96,14 +96,14 @@ export default [
   //     auth: true,
   //   },
   // },
-  // {
-  //   path: '/info',
-  //   name: 'informations.index',
-  //   component: () => import('@/views/Informations/Index.vue'),
-  //   meta: {
-  //     auth: false,
-  //   },
-  // }, //// Minicourses
+  {
+    path: '/info',
+    name: 'informations.index',
+    component: () => import('@/views/Informations/Index.vue'),
+    meta: {
+      auth: false,
+    },
+  }, //// Minicourses
   // {
   //   path: '/miniCourse/register',
   //   name: 'minicourse.register.index',
