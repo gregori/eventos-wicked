@@ -6,38 +6,38 @@
  */
 
 export default [
-  // {
-  //   path: '/login',
-  //   name: 'login.index',
-  //   component: () => import('@/views/Login/Index.vue'),
-  //   meta: {
-  //     guest: true,
-  //   },
-  // },
-  // {
-  //   path: '/recover-password',
-  //   name: 'login.recoverPassword',
-  //   component: () => import('@/views/Login/RecoverPassword.vue'),
-  //   meta: {
-  //     guest: true,
-  //   },
-  // },
-  // {
-  //   path: '/dashboard',
-  //   name: 'dashboard.index',
-  //   component: () => import('@/views/Dashboard/Index.vue'),
-  //   meta: {
-  //     auth: true,
-  //   },
-  // },
-  // {
-  //   path: '/register',
-  //   name: 'register.index',
-  //   component: () => import('@/views/Register/Index.vue'),
-  //   meta: {
-  //     guest: true,
-  //   },
-  // },
+  {
+    path: '/login',
+    name: 'login.index',
+    component: () => import('@/views/Login/Index.vue'),
+    meta: {
+      guest: true,
+    },
+  },
+  {
+    path: '/recover-password',
+    name: 'login.recoverPassword',
+    component: () => import('@/views/Login/RecoverPassword.vue'),
+    meta: {
+      guest: true,
+    },
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard.index',
+    component: () => import('@/views/Dashboard/Index.vue'),
+    meta: {
+      auth: true,
+    },
+  },
+  {
+    path: '/register',
+    name: 'register.index',
+    component: () => import('@/views/Register/Index.vue'),
+    meta: {
+      guest: true,
+    },
+  },
   // {
   //   path: '/team/edit',
   //   name: 'team.edit',

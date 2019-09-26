@@ -85,16 +85,16 @@ export default {
 
     countRobotNotPayed() {
       let counter = 0;
-      this.robots.forEach(robot => {
-        if (robot.actualState === null || robot.actualState.state === "Pendente") counter++;
-      });
+      // this.robots.forEach(robot => {
+      //   if (robot.actualState === null || robot.actualState.state === "Pendente") counter++;
+      // });
       return counter;
     },
     countMemberPayed() {
       let counter = 0;
-      this.members.forEach(member => {
-        if (member.actualState === null || member.actualState.state === "Pendente") counter++;
-      });
+      // this.members.forEach(member => {
+      //   if (member.actualState === null || member.actualState.state === "Pendente") counter++;
+      // });
       return counter;
     },
     storageBaseDir(){

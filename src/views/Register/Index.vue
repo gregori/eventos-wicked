@@ -76,10 +76,12 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import VLayout from '@/layout/Landing.vue';
 import ProviderButtons from '@/components/ProviderButtons.vue'
 import LoginCard from '@/components/cards/LoginCard.vue'
 import { required, email, sameAs, minLength } from 'vuelidate/lib/validators'
+import firebase from '@/plugins/firebase';
 import store from '@/store';
 
 export default {
@@ -153,6 +155,28 @@ export default {
     },
 
     createUserEmailAndPassword () {
+      firebase.auth().createUserWithEmailAndPassword(
+        this.form.email,
+        this.form.password,
+      ).then(() => {
+        this.sending = false;
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            store.dispatch('auth/login', user);
+            Vue.router.push({
+              name: 'dashboard.index',
+            });
+          } else {
+            store.dispatch('auth/logout');
+          }
+        });
+      }).catch(error => {
+        this.sending = false
+        let translationKey = `errors.${error.code}`;
+        let msg = error.message;
+        if (this.$te(translationKey)) msg = this.$t(translationKey);
+        store.dispatch('alert/error', msg);
+      });
     },
 
     validateUser () {

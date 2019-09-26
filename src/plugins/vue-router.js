@@ -11,6 +11,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from '@/routes';
+import firebase from '@/plugins/firebase';
+import store from '@/store';
 
 Vue.use(VueRouter);
 
@@ -29,32 +31,33 @@ export const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // console.log('auth.loggedIn: ', store.state.auth.loggedIn);
-  // store.dispatch('alert/clear');
-  // if (to.matched.some(m => m.meta.auth) && !store.state.auth.loggedIn) {
+  store.dispatch('alert/clear');
+  console.log(store.state.auth)
+  if (to.matched.some(m => m.meta.auth) && !store.state.auth.loggedIn) {
     /*
      * If the user is not authenticated and visits
      * a page that requires authentication, redirect to the login page
      * by saving state were user was going
      */
 
-    // if (to.path !== '/login') {
-    //   store.dispatch('redirects/set', to.path);
-    // }
+    if (to.path !== '/login') {
+      store.dispatch('redirects/set', to.path);
+    }
 
-  //   next({
-  //     name: 'login.index',
-  //   });
-  // } else if (to.matched.some(m => m.meta.guest) && store.state.auth.loggedIn) {
+    next({
+      name: 'login.index',
+    });
+  } else if (to.matched.some(m => m.meta.guest) && store.state.auth.loggedIn) {
     /*
      * If the user is authenticated and visits
      * an guest page, redirect to the dashboard page
      */
-    // next({
-      // name: 'dashboard.index',
-    // });
-  // } else {
+    next({
+      name: 'dashboard.index',
+    });
+  } else {
     next();
-  // }
+  }
 });
 
 Vue.router = router;
