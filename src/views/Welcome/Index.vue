@@ -4,8 +4,8 @@
     <parallax class="section page-header header-filter fix-sizes" :style="headerStyle">
       <div class="container">
         <div class="md-layout">
-    			<div class="md-layout-item md-size-70 md-small-size-70 md-xsmall-size-100">
-            <h2 class="title">
+    			<!-- <div class="md-layout-item md-size-70 md-small-size-70 md-xsmall-size-100"> -->
+            <!-- <h2 class="title">
               2º Summit de Robótica da Católica SC
             </h2>
             <h4>
@@ -26,13 +26,13 @@
               <md-button href="/team/edit" class="md-success md-lg">
                 Incrições em breve
               </md-button>
-            </router-link>
+            </router-link> -->
             <!-- <router-link tag="button" :to="{ name: 'minicourse.register.index' }" class="md-list-item-button md-list-item-container md-button-clean">
               <md-button href="/team/edit" class="md-success md-lg">
                 Participar do mini-curso
               </md-button>
             </router-link> -->
-    			</div>
+    			<!-- </div> -->
         </div>
       </div>
     </parallax>
@@ -51,11 +51,19 @@
                 Sumô 3kg RC, Sumô 1kg Lego, Trekking, Combate: Fairyweight, Antweight, Bettleweight, Hobbyweight,
                 Futebol Very Small Size League, Futebol VSS RC, Artbot e Hockey.
                 <br />
-
                 <router-link :to="{name: 'categories.index'}">
                   Clique aqui
                 </router-link>
                 para ver mais informações sobre as categorias
+
+                <br /><br />
+                <center>
+                  <router-link tag="button" :to="{ name: '' }" class="md-list-item-button md-list-item-container md-button-clean">
+                    <md-button href="/team/edit" class="md-success md-lg">
+                      Incrições em breve
+                    </md-button>
+                  </router-link>
+                </center>
               </h4>
             </div>
           </div>
