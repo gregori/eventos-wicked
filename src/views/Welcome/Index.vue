@@ -134,6 +134,10 @@ export default {
     }
   },
   mounted() {
+    console.log(process.env.VUE_APP_WICKED_API_HOST);
+    this.$axios
+      .get(process.env.VUE_APP_WICKED_API_HOST + 'people')
+      .then(response => (console.log(response)))
   },
 };
 </script>

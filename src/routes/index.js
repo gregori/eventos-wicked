@@ -54,14 +54,14 @@ export default [
   //     auth: false, /*Modify to true, if it will need a leader before create the team*/
   //   },
   // },
-  // {
-  //   path: '/profile/edit',
-  //   name: 'profile.edit',
-  //   component: () => import('@/views/Profile/Edit.vue'),
-  //   meta: {
-  //     auth: true,
-  //   },
-  // },
+  {
+    path: '/profile/edit',
+    name: 'profile.edit',
+    component: () => import('@/views/Profile/Edit.vue'),
+    meta: {
+      auth: true,
+    },
+  },
   // {
   //   path: '/member/edit',
   //   name: 'member.edit',

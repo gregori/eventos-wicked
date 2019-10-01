@@ -8,11 +8,10 @@
             <dashboard-steps currentStep="profile.edit">
               <div class="md-layout" slot="content">
                 <div class="md-layout-item md-size-15 ml-auto" >
-                  <image-upload
+                  <!-- <image-upload
                     :image-url="profileImage"
                     :on-success="commitProfileImage"
-                    :base-dir="storageBaseDir"
-                  />
+                  /> -->
                 </div>
                 <div class="md-layout-item md-size-80 ml-auto mr-auto">
                   <div class="container">
@@ -22,6 +21,7 @@
                         <label>E-mail</label>
                         <md-input
                           id="email"
+                          name="email"
                           :value="profileEmail"
                           :disabled="true"
                         />
@@ -109,7 +109,7 @@
         </div>
       </div>
     </div>
-    {{vuexObserver}}
+    <!-- {{vuexObserver}} -->
   </div>
 </v-layout>
 </template>
@@ -168,7 +168,8 @@ export default {
     ...mapGetters('auth', {
       profileEmail: 'profileEmail',
       profileImage: 'profileImage',
-      storageBaseDir: 'storageBaseDir',
+      teamCaptainID: 'teamCaptainID',
+      // storageBaseDir: 'storageBaseDir',
     }),
     ...mapGetters('user', {
       userData: 'data',
@@ -180,12 +181,12 @@ export default {
   },
 
   methods: {
-    fetchData() {
-      let data = Object.assign({}, this.userData);
-      Object.entries(data).forEach(([key, value]) => {
-        this.form[key] = value
-      });
-    },
+    // fetchData() {
+      // let data = Object.assign({}, this.userData);
+      // Object.entries(data).forEach(([key, value]) => {
+      //   this.form[key] = value
+      // });
+    // },
 
     getValidationClass (fieldName) {
       const field = this.$v.form[fieldName]
@@ -211,10 +212,30 @@ export default {
 
     commit (){
       let data = Object.assign({}, this.form);
-      store.dispatch('user/updateData', data).then(() => {
+      console.log(data)
+      // console.log(teste())
+      console.log()
+      console.log(this.teamCaptainID)
+      data = {
+        "person_type_id": (this.teamCaptainID ? 3 : 1),
+        "name": data.name,
+        "email": this.profileEmail,
+        "cpf:": data.cpf,
+        "rg": data.rg,
+        "date_of_birth": data.dateOfBirth + " 00:00:00",
+        "phone": data.phone
+      }
+      console.log(data)
+      this.$axios.post(process.env.VUE_APP_WICKED_API_HOST + 'people', data)
+      .then((res) => {
         this.sending = false;
-        Vue.router.push({ name: 'team.edit' })
-      }).catch()
+        console.log(res)
+      })
+      .catch(err => {
+        this.sending = false;
+        console.log(err);
+
+      })
     },
 
     validateForm (event) {
@@ -227,7 +248,7 @@ export default {
         this.showValidationErrors = true;
       }
     },
-  },
+  }
 };
 </script>
 

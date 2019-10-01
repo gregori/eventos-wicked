@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import firestore from '@/plugins/firestore';
 import { mapGetters } from 'vuex';
 import DashboardStep from '@/components/DashboardStep.vue';
 
@@ -138,6 +137,7 @@ export default {
       if(!step) return false
       if(this.currentDone && this.isCurrentStep(key)) return true
 
+      // console.log(key);
       if (typeof step.done === 'function') {
         return step.done.apply(this)
       } else {

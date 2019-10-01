@@ -15,11 +15,13 @@ import Vue from 'vue'
  */
 import './plugins/vuex';
 import store from './store';
+import firebase from './plugins/firebase'
 import { i18n } from './plugins/vue-i18n';
 import { router } from './plugins/vue-router';
 import './plugins/vuelidate';
 import './plugins/material-kit';
 import './plugins/moment';
+import axios from 'axios'
 // import './plugins/async-computed'; @TODO Remove from packages too
 import MaterialKit from '@/plugins/material-kit';
 
@@ -30,10 +32,17 @@ import MaterialKit from '@/plugins/material-kit';
  * Last but not least, we import the main application.
  */
 import App from './App'
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    store.dispatch('auth/login', user);
+  } else {
+    store.dispatch('auth/logout');
+  }
+});
 
 Vue.config.productionTip = false;
-
 Vue.use(MaterialKit);
+Vue.prototype.$axios = axios;
 
 const NavbarStore = {
   showNavbar: false

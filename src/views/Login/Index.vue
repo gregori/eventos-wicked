@@ -136,10 +136,16 @@ export default {
 
     loginWithEmailAndPassword () {
       firebase.auth().signInWithEmailAndPassword(this.form.email, this.form.password)
-        .then(() => {
+        .then((user) => {
+          console.log(user)
           this.sending = false
+          // store.dispatch('auth/login', user);
+          Vue.router.push({
+            name: 'dashboard.index',
+          });
         })
         .catch(error => {
+          console.log(error)
           this.sending = false
           let translationKey = `errors.${error.code}`;
           let msg = error.message;
