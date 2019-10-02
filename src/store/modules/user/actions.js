@@ -14,14 +14,22 @@ import store from '@/store';
 
 export const fetch = ({ commit }) => {
 
-  axios
-      .get(process.env.VUE_APP_WICKED_API_HOST + 'people')
-      .then(response => (console.log(response)));
-
-
   var user = firebase.auth().currentUser,
-      uid = user.uid,
-      usersRef = firestore.collection('users');
+  uid = user.uid,
+  usersRef = firestore.collection('users');
+
+  axios.get(process.env.VUE_APP_WICKED_API_HOST + 'people/email?email=' + user.email)
+    .then(response => {
+      console.log(response)
+      commit(types.SET, {
+        id: 'doc.id',
+        data: response,
+    })
+      return response;
+    })
+    .catch(err => {
+
+    });
 
       // Try to search for the user by auth uid
       usersRef.where('uid', '==', uid)

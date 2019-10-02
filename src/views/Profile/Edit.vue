@@ -109,7 +109,7 @@
         </div>
       </div>
     </div>
-    <!-- {{vuexObserver}} -->
+    {{vuexObserver}}
   </div>
 </v-layout>
 </template>
@@ -181,12 +181,14 @@ export default {
   },
 
   methods: {
-    // fetchData() {
-      // let data = Object.assign({}, this.userData);
-      // Object.entries(data).forEach(([key, value]) => {
-      //   this.form[key] = value
-      // });
-    // },
+    fetchData() {
+      console.log(this.userData)
+      if (this.userData.data === undefined) return ;
+      let data = Object.assign({}, this.userData.data.person[0]);
+      Object.entries(data).forEach(([key, value]) => {
+        this.form[key] = value
+      });
+    },
 
     getValidationClass (fieldName) {
       const field = this.$v.form[fieldName]
@@ -212,12 +214,9 @@ export default {
 
     commit (){
       let data = Object.assign({}, this.form);
-      console.log(data)
-      // console.log(teste())
-      console.log()
-      console.log(this.teamCaptainID)
+
       data = {
-        "person_type_id": (this.teamCaptainID ? 3 : 1),
+        "person_type_id": (this.teamCaptainID ? 4 : 1),
         "name": data.name,
         "email": this.profileEmail,
         "cpf:": data.cpf,
@@ -225,16 +224,17 @@ export default {
         "date_of_birth": data.dateOfBirth + " 00:00:00",
         "phone": data.phone
       }
-      console.log(data)
+
       this.$axios.post(process.env.VUE_APP_WICKED_API_HOST + 'people', data)
       .then((res) => {
         this.sending = false;
-        console.log(res)
+        if (res.data.success !== true) {
+          store.dispatch('alert/error', res.data.message);
+        }
       })
       .catch(err => {
         this.sending = false;
-        console.log(err);
-
+        store.dispatch('alert/error', err.data.message);
       })
     },
 
