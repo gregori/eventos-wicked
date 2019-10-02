@@ -184,9 +184,9 @@ export default {
       userObserver: 'observer',
       logoBaseDir: 'logoStorageBaseDir',
     }),
-    // vuexObserver() { // Make sure to call method
-    //   if(this.userObserver) this.fetchData();
-    // },
+    vuexObserver() { // Make sure to call method
+      if(this.userObserver) this.fetchData();
+    },
   },
 
   validations: {
@@ -213,19 +213,19 @@ export default {
       userData: 'data',
       userObserver: 'observer',
     }),
-    // vuexObserver() { // Make sure to call method
-    //   if (this.teamData) {
-    //     if (this.teamData.captainUserID) {
-    //       this.fetchData();
-    //       this.hasTeam = true;
-    //       // console.log(this.teamData.captainUserID)
-    //       // console.log(this.userData.uid);
-    //       if (this.teamData.captainUserID == this.userData.uid) {
-    //         this.isCapitain = true;
-    //       }
-    //     }
-    //   }
-    // },
+    vuexObserver() { // Make sure to call method
+      if (this.teamData) {
+        if (this.teamData.captainUserID) {
+          this.fetchData();
+          this.hasTeam = true;
+          // console.log(this.teamData.captainUserID)
+          // console.log(this.userData.uid);
+          if (this.teamData.captainUserID == this.userData.uid) {
+            this.isCapitain = true;
+          }
+        }
+      }
+    },
   },
 
   methods: {
@@ -234,7 +234,7 @@ export default {
     //   Object.entries(data).forEach(([key, value]) => {
     //     this.form[key] = value
     //   });
-    },
+    // },
 
     getValidationClass (fieldName) {
       const field = this.$v.form[fieldName]

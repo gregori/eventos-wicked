@@ -38,22 +38,22 @@ export default [
       guest: true,
     },
   },
-  // {
-  //   path: '/team/edit',
-  //   name: 'team.edit',
-  //   component: () => import('@/views/Team/Edit.vue'),
-  //   meta: {
-  //     auth: true,
-  //   },
-  // },
-  // {
-  //   path: '/team/all',
-  //   name: 'team_list.new',
-  //   components: () => import('@/views/Team/TeamList.vue'),
-  //   meta: {
-  //     auth: false, /*Modify to true, if it will need a leader before create the team*/
-  //   },
-  // },
+  {
+    path: '/team/edit',
+    name: 'team.edit',
+    component: () => import('@/views/Team/Edit.vue'),
+    meta: {
+      auth: true,
+    },
+  },
+  {
+    path: '/team/all',
+    name: 'team_list.new',
+    components: () => import('@/views/Team/TeamList.vue'),
+    meta: {
+      auth: false, /*Modify to true, if it will need a leader before create the team*/
+    },
+  },
   {
     path: '/profile/edit',
     name: 'profile.edit',
@@ -62,22 +62,22 @@ export default [
       auth: true,
     },
   },
-  // {
-  //   path: '/member/edit',
-  //   name: 'member.edit',
-  //   component: () => import('@/views/Member/Edit.vue'),
-  //   meta: {
-  //     auth: true,
-  //   },
-  // },
-  // {
-  //   path: '/robot/edit',
-  //   name: 'robot.edit',
-  //   component: () => import('@/views/Robot/Edit.vue'),
-  //   meta: {
-  //     auth: true,
-  //   },
-  // },
+  {
+    path: '/member/edit',
+    name: 'member.edit',
+    component: () => import('@/views/Member/Edit.vue'),
+    meta: {
+      auth: true,
+    },
+  },
+  {
+    path: '/robot/edit',
+    name: 'robot.edit',
+    component: () => import('@/views/Robot/Edit.vue'),
+    meta: {
+      auth: true,
+    },
+  },
   {
     path: '/categories',
     name: 'categories.index',
@@ -88,14 +88,14 @@ export default [
     name: 'about.index',
     component: () => import('@/views/About/Index.vue'),
   },
-  // {
-  //   path: '/payment',
-  //   name: 'payment.index',
-  //   component: () => import('@/views/Payment/Index.vue'),
-  //   meta: {
-  //     auth: true,
-  //   },
-  // },
+  {
+    path: '/payment',
+    name: 'payment.index',
+    component: () => import('@/views/Payment/Index.vue'),
+    meta: {
+      auth: true,
+    },
+  },
   {
     path: '/info',
     name: 'informations.index',

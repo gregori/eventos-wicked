@@ -12,6 +12,8 @@ export default {
   observer: ({fetched, uid, data}) => `${fetched}-${uid}-${Object.values(data).join('-')}`,
   fetched: ({fetched}) => fetched,
   stepDone: ({data}) => {
-    return data.cpf !== null;
+    console.log(data)
+    if (data.data === undefined || data.data.person.length <= 0) return false;
+    return data.data.person[0].cpf !== null;
   },
 };

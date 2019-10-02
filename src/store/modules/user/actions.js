@@ -20,9 +20,8 @@ export const fetch = ({ commit }) => {
 
   axios.get(process.env.VUE_APP_WICKED_API_HOST + 'people/email?email=' + user.email)
     .then(response => {
-      console.log(response)
       commit(types.SET, {
-        id: 'doc.id',
+        id: user.email,
         data: response,
     })
       return response;
@@ -30,54 +29,6 @@ export const fetch = ({ commit }) => {
     .catch(err => {
 
     });
-
-      // Try to search for the user by auth uid
-      usersRef.where('uid', '==', uid)
-      .get()
-      .then(function(querySnapshot) {
-        if (querySnapshot.size > 0) {
-          querySnapshot.forEach(function(doc) {
-            commit(types.SET, {
-              id: doc.id,
-              data: doc.data(),
-          })
-          let teamID = doc.data().teamMemberID;
-          if (teamID) store.dispatch('team/loadById', teamID);
-        });
-      } else {
-        let email = user.email;
-        // Try to search for user by email(Yes firestore does not support OR accross multiple fields)
-        usersRef.where('email', '==', email).where('uid', '==', null)
-        .get()
-        .then(function(querySnapshot) {
-          if (querySnapshot.size > 0) {
-            querySnapshot.forEach(function(doc) {
-              commit(types.SET, {
-                  id: doc.id,
-                  data: doc.data(),
-                })
-                store.dispatch('user/setAuthUid', uid)
-                let teamID = doc.data().teamMemberID;
-                if (teamID) store.dispatch('team/loadById', teamID);
-              });
-            } else {
-              // Otherwise.. Create new user
-              let data = {
-                uid: uid,
-                email: user.email,
-                name: user.displayName,
-                teamMemberID: null,
-              }
-              usersRef.add(data).then((docRef) => {
-                commit(types.SET, {
-                  id: docRef.id,
-                  data: data,
-                })
-              }).catch();
-            }
-          }).catch();
-      }
-    }).catch();
 };
 
 export const setAuthUid = ({commit, state}, uid) => {
@@ -90,7 +41,6 @@ export const setAuthUid = ({commit, state}, uid) => {
 }
 
 export const setTeamMemberID = ({commit, state}, teamID) => {
-  console.log('here')
   if(!state.id) return;
   var docRef = firestore.collection('users').doc(state.id);
     docRef.set({ teamMemberID: teamID }, { merge: true }).then(() => {

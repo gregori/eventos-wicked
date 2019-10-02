@@ -43,6 +43,7 @@ export default {
     ...mapGetters('user', {
       userID: 'id',
       userFetched: 'fetched',
+      userData: 'data',
     }),
     ...mapGetters('team', {
       teamFetched: 'fetched',
@@ -51,6 +52,9 @@ export default {
       return !this.userFetched;
     },
     showCaptainDialog() {
+      console.log(this.userData)
+      return this.userData.data.person.length > 0 &&
+            this.userData.data.person[0].person_type_id == "";
       if(this.dialogIsCaptain !== null) return false;
       return !this.isLoading && this.userFetched && !this.teamFetched
     },

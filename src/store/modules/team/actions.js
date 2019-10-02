@@ -6,6 +6,7 @@
  * users module.
  */
 
+import axios from 'axios'
 import * as types from './mutation-types';
 import firestore from '@/plugins/firestore';
 import store from '@/store';
@@ -28,19 +29,24 @@ export const loadById = ({ commit }, teamID) => {
 };
 
 export const createEmptyTeam = ({commit}, userID) => {
+  // var data = {
+  //   captainUserID: userID,
+  // }
+  console.log(data)
+  // http://localhost/robotic-events/api/v1/team
   var data = {
-    captainUserID: userID,
+    "name": ""
   }
 
-  firestore.collection('teams').add(data).then((docRef) => {
-    commit(types.SET, {
-      id: docRef.id,
-      data: data,
-    })
-    store.dispatch('user/setTeamMemberID', docRef.id)
-    store.dispatch('robots/setTeamID', docRef.id)
-    store.dispatch('members/setTeamID', docRef.id)
-  }).catch();
+  axios.post(process.env.VUE_APP_WICKED_API_HOST + 'team', data)
+  .then((res) => {
+    if (res.data.success !== true) {
+      store.dispatch('alert/error', res.data.message);
+    }
+  })
+  .catch(err => {
+    store.dispatch('alert/error', err.data.message);
+  })
 };
 
 export const updateData = ({commit, state}, data) => {
