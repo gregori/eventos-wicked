@@ -215,37 +215,48 @@ export default {
       userObserver: 'observer',
     }),
     vuexObserver() { // Make sure to call method
+      if (!this.userObserver) return ;
+      if (!this.userData.data.person) return ;
       if (this.userData.data.person.length > 0) {
         if (this.userData.data.person[0].team_id != null) {
-          console.log('User data: ');
-          console.log(this.userData.data.person[0].team_id)
+          // console.log('[EDIT TEAM] User data: ');
+          // console.log(this.userData.data.person[0].team_id)
           this.teamId = this.userData.data.person[0].team_id;
           this.isCapitain = true;
           this.hasTeam = true;
+          this.fetchData();
         }
       }
-      // if (this.teamData) {
-      //   if (this.teamData.captainUserID) {
-      //     this.fetchData();
-      //     this.hasTeam = true;
-      //     // console.log(this.teamData.captainUserID)
-      //     // console.log(this.userData.uid);
-      //     if (this.teamData.captainUserID == this.userData.uid) {
-      //       this.isCapitain = true;
-      //     }
-      //   }
-      // }
     },
   },
 
   methods: {
     fetchData() {
-      console.log(this.userData)
-      if (this.userData.data === undefined) return ;
-      let data = Object.assign({}, this.userData.data.person[0]);
-      Object.entries(data).forEach(([key, value]) => {
-        this.form[key] = value
-      });
+      // console.log('[EDIT TEAM]: ')
+      // console.log(this.userData)
+
+      if (this.teamId) {
+        this.$axios.get(process.env.VUE_APP_WICKED_API_HOST + 'teams/' + this.teamId)
+        .then(res => {
+          console.log('Respose: ')
+          console.log(res)
+          let data = res.data.team;
+          this.form = data;
+          // this.form.name = data.name;
+          // this.form.slogan = data.slogan;
+          // this.form.institution = data.institution;
+        })
+        .catch(err => {
+          console.log('Error: ')
+          console.log(err)
+        })
+
+      }
+      // if (this.userData.data === undefined) return ;
+      // let data = Object.assign({}, this.userData.data.person[0]);
+      // Object.entries(data).forEach(([key, value]) => {
+      //   this.form[key] = value
+      // });
     },
 
     getValidationClass (fieldName) {
@@ -288,7 +299,7 @@ export default {
         "city": this.form.city
       }
 
-      this.$axios.patch(process.env.VUE_APP_WICKED_API_HOST + 'team/' + this.teamId, data)
+      this.$axios.patch(process.env.VUE_APP_WICKED_API_HOST + 'teams/' + this.teamId, data)
       .then((res) => {
         this.sending = false;
         console.log(res);

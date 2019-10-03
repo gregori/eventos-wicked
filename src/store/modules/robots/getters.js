@@ -10,7 +10,7 @@ export default {
   entries: ({entries}) => entries,
   observer: ({teamID, entries}) => `${teamID}-${entries.length}`,
   stepDone: ({teamID, entries}) => {
-    return false;
+    return true;
     return teamID !== null && entries.length > 0;
   },
   storageBaseDir: ({teamID}) => {
