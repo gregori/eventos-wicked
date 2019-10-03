@@ -38,15 +38,31 @@ export const createEmptyTeam = ({commit}, userID) => {
     "name": ""
   }
 
-  axios.post(process.env.VUE_APP_WICKED_API_HOST + 'team', data)
-  .then((res) => {
-    if (res.data.success !== true) {
-      store.dispatch('alert/error', res.data.message);
+  // axios.post(process.env.VUE_APP_WICKED_API_HOST + 'team', data)
+  // .then((res) => {
+  //   if (res.data.success !== true) {
+  //     store.dispatch('alert/error', res.data.message);
+  //   }
+  // })
+  // .catch(err => {
+  //   store.dispatch('alert/error', err.data.message);
+  // })
+
+  axios.get(process.env.VUE_APP_WICKED_API_HOST + 'people/email?email=' + user.email)
+  .then(response => {
+    if (response.data.person[0]) {
+      // axios.
     }
+    // commit(types.SET, {
+    //   id: user.email,
+    //   data: response,
+  // })
+    // return response;
+
   })
   .catch(err => {
-    store.dispatch('alert/error', err.data.message);
-  })
+
+  });
 };
 
 export const updateData = ({commit, state}, data) => {

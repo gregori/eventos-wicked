@@ -99,6 +99,7 @@
       </div>
     </div>
   </div>
+  {{ vuexObserver }}
 </v-layout>
 </template>
 
@@ -130,16 +131,20 @@ export default {
       },
       sending: false,
       showValidationErrors: false,
+      teamId: null,
+      members: []
     };
   },
 
   computed: {
     ...mapGetters('user', {
       userID: 'id',
+      userData: 'data',
+      userObserver: 'observer',
     }),
-    ...mapGetters('members', {
-      members: 'entries',
-    }),
+    vuexObserver() { // Make sure to call method
+      if(this.userObserver) this.fetchData();
+    },
     anyMember() {
       return this.members.length > 0;
     },
@@ -162,6 +167,33 @@ export default {
   },
 
   methods: {
+    fetchData() {
+      console.log(this.userData)
+      if (this.userData.data === undefined) return ;
+      let data = Object.assign({}, this.userData.data.person[0]);
+      this.teamId = data.team_id;
+      console.log('getting data')
+      console.log(data)
+      let myId = this.teamId
+      this.$axios.get(process.env.VUE_APP_WICKED_API_HOST + 'people')
+      .then((res) => {
+        console.log(res)
+        let data = res.data.people;
+        data.forEach(element => {
+          console.log(element);
+          if (element.team_id === myId) {
+            this.members.push(element)
+          }
+        });
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      // Object.entries(data).forEach(([key, value]) => {
+      //   this.form[key] = value
+      // });
+    },
+
     getValidationClass (fieldName) {
       const field = this.$v.form[fieldName]
       if (field) {
@@ -206,12 +238,22 @@ export default {
     },
 
     commit() {
-      let data = Object.assign({}, this.form);
-      store.dispatch('members/addEntry', data).then(() => {
-        this.sending = false;
-        this.resetForm();
-      }).catch((error) => {
-        this.showError(error)
+      let data = {
+        "person_type_id": 1,
+        "name": this.form.name,
+        "email": this.form.email,
+        "cpf": this.form.cpf,
+        "date_of_birth": this.form.dateOfBirth + " 00:00:00",
+        "team_id": this.teamId
+      }
+      this.$axios.post(process.env.VUE_APP_WICKED_API_HOST + 'people', data)
+      .then((res) => {
+        this.sending = false
+        console.log(res)
+      })
+      .catch((err) => {
+        this.sending = false
+        console.log(err)
       })
     },
 

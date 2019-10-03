@@ -214,7 +214,7 @@ export default {
 
     commit (){
       let data = Object.assign({}, this.form);
-
+      let cpf = this.form.cpf;
       data = {
         "person_type_id": (this.teamCaptainID ? 4 : 1),
         "name": data.name,
@@ -224,15 +224,47 @@ export default {
         "date_of_birth": data.dateOfBirth + " 00:00:00",
         "phone": data.phone
       }
-
+      console.log(data)
       this.$axios.post(process.env.VUE_APP_WICKED_API_HOST + 'people', data)
       .then((res) => {
         this.sending = false;
+        console.log('first return: ')
+        console.log(res)
         if (res.data.success !== true) {
           store.dispatch('alert/error', res.data.message);
+        } else {
+          this.$axios.post(process.env.VUE_APP_WICKED_API_HOST + 'team', {"name": ""})
+          .then((res2) => {
+            if (res.data.success !== true) {
+              console.log(res2)
+              store.dispatch('alert/error', res2.data.message);
+            }
+            console.log('Time data:')
+            console.log(res2);
+
+            this.$axios.get(process.env.VUE_APP_WICKED_API_HOST + 'people/email?email=' + this.profileEmail)
+            .then(response => {
+              console.log("User data: ")
+              console.log(response)
+              if (response.data.person[0]) {
+                let _data = response.data.person[0];
+                _data.cpf = cpf;
+                _data.team_id = res2.data.team.team_id;
+                console.log('Data to send:')
+                console.log(_data)
+                this.$axios.patch(process.env.VUE_APP_WICKED_API_HOST + 'people/' + res.data.person.person_id, { "team_id": res2.data.team.team_id})
+                .then((res_) =>{
+                  console.log('Atualizado com sucesso!')
+                  console.log(res_)
+                  this.sending = false;
+                });
+              }
+            })
+          })
         }
       })
       .catch(err => {
+        console.log(err)
         this.sending = false;
         store.dispatch('alert/error', err.data.message);
       })
@@ -245,6 +277,7 @@ export default {
         this.sending = true;
         this.commit();
       } else {
+        this.sending = false;
         this.showValidationErrors = true;
       }
     },

@@ -12,7 +12,10 @@ export default {
   observer: ({fetched, uid, data}) => `${fetched}-${uid}-${Object.values(data).join('-')}`,
   fetched: ({fetched}) => fetched,
   stepDone: ({data}) => {
-    return data.name !== null;
+    console.log('[TEAM_ACTIONS] Team data: ')
+    console.log(data)
+    return true;
+    // return data.name !== null;
   },
   logoStorageBaseDir: ({id}) => {
     return `teams/${id}/logo`

@@ -8,12 +8,12 @@
             <dashboard-steps currentStep="team.edit">
               <div class="md-layout" slot="content" v-if="hasTeam">
                 <div class="md-layout-item md-size-15 ml-auto">
-                  <image-upload
+                  <!-- <image-upload
                     :image-url="form.logoURL"
                     :on-success="commitLogo"
                     v-if="logoBaseDir || !isCapitain"
                     :base-dir="logoBaseDir"
-                  />
+                  /> -->
                 </div>
                 <div class="md-layout-item md-size-80 ml-auto mr-auto">
                   <div class="container">
@@ -132,7 +132,7 @@
         </div>
       </div>
     </div>
-    <!-- {{vuexObserver}} -->
+    {{vuexObserver}}
   </div>
 </v-layout>
 </template>
@@ -170,6 +170,7 @@ export default {
         city: null,
         logoURL: null,
       },
+      teamId: null,
       sending: false,
       passLenght: 6,
       showValidationErrors: false,
@@ -214,27 +215,38 @@ export default {
       userObserver: 'observer',
     }),
     vuexObserver() { // Make sure to call method
-      if (this.teamData) {
-        if (this.teamData.captainUserID) {
-          this.fetchData();
+      if (this.userData.data.person.length > 0) {
+        if (this.userData.data.person[0].team_id != null) {
+          console.log('User data: ');
+          console.log(this.userData.data.person[0].team_id)
+          this.teamId = this.userData.data.person[0].team_id;
+          this.isCapitain = true;
           this.hasTeam = true;
-          // console.log(this.teamData.captainUserID)
-          // console.log(this.userData.uid);
-          if (this.teamData.captainUserID == this.userData.uid) {
-            this.isCapitain = true;
-          }
         }
       }
+      // if (this.teamData) {
+      //   if (this.teamData.captainUserID) {
+      //     this.fetchData();
+      //     this.hasTeam = true;
+      //     // console.log(this.teamData.captainUserID)
+      //     // console.log(this.userData.uid);
+      //     if (this.teamData.captainUserID == this.userData.uid) {
+      //       this.isCapitain = true;
+      //     }
+      //   }
+      // }
     },
   },
 
   methods: {
-    // fetchData() {
-    //   let data = Object.assign({}, this.teamData);
-    //   Object.entries(data).forEach(([key, value]) => {
-    //     this.form[key] = value
-    //   });
-    // },
+    fetchData() {
+      console.log(this.userData)
+      if (this.userData.data === undefined) return ;
+      let data = Object.assign({}, this.userData.data.person[0]);
+      Object.entries(data).forEach(([key, value]) => {
+        this.form[key] = value
+      });
+    },
 
     getValidationClass (fieldName) {
       const field = this.$v.form[fieldName]
@@ -264,10 +276,27 @@ export default {
 
     commit() {
       let data = Object.assign({}, this.form);
-      store.dispatch('team/updateData', data).then(() => {
+
+      data = {
+        "name": this.form.name,
+        "email": this.form.email,
+        "website": this.form.website,
+        "slogan": this.form.slogan,
+        "institution": this.form.institution,
+        "country": this.form.country,
+        "state": this.form.state,
+        "city": this.form.city
+      }
+
+      this.$axios.patch(process.env.VUE_APP_WICKED_API_HOST + 'team/' + this.teamId, data)
+      .then((res) => {
         this.sending = false;
-        Vue.router.push({ name: 'member.edit' })
-      }).catch()
+        console.log(res);
+      })
+      .catch((err) => {
+        this.sending = false;
+        console.log(err)
+      })
     },
 
     validateForm () {
