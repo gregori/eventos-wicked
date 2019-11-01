@@ -45,24 +45,24 @@
                 2º Summit de Robótica da Católica SC
               </h2>
               <h4 class="description">
-                O Summit de Robótica da Católica SC é um projeto integrador dos cursos de Engenharia de Software e
-                Sistemas de Informação da Católica de Santa Catarina e este evento é um campeonato de robótica, contemplando
-                seguintes categorias: Seguidor de linha pro, Seguidor de linha júnior, Sumô mini (500g) auto, Sumô 3kg auto,
-                Sumô 3kg RC, Sumô 1kg Lego, Trekking, Combate: Fairyweight, Antweight, Bettleweight, Hobbyweight,
-                Futebol Very Small Size League, Futebol VSS RC, Artbot e Hockey.
-                <br />
+                O que fazer com seus robôs parados? Já está quase terminando o ano! Já pensou em participar de um dos maiores eventos 
+                de robótica do sul do país? Então prepare-se! Vem aí o 2º Summit de Robótica da Católica SC, em Joinville! 
+                Um evento apoiado pela Católica de Santa Catarina e idealizado pela Equipe de Robótica Wickedbotz e pelo 
+                Grupo Estudantil de Robótica Móvel - GERM. A competição irá acontecer nos dias 15, 16 e 17 de Novembro de 2019, 
+                ocorrendo das 9:00 às 21:00 no campus da Católica de Santa Catarina em Joinville, bloco A. 
+                <br>
                 <router-link :to="{name: 'categories.index'}">
                   Clique aqui
                 </router-link>
                 para ver mais informações sobre as categorias
 
-                <br /><br />
+                <br><br>
                 <center>
-                  <router-link tag="button" :to="{ name: '' }" class="md-list-item-button md-list-item-container md-button-clean">
-                    <md-button href="/team/edit" class="md-success md-lg">
-                      Incrições em breve
+                  <!--<router-link tag="button" :to="{ name: '' }" class="md-list-item-button md-list-item-container md-button-clean"> -->
+                    <md-button href="https://forms.gle/2a362DauVq2amJi58" class="md-success md-lg">
+                      Incrições aqui
                     </md-button>
-                  </router-link>
+                <!--  </router-link> -->
                 </center>
               </h4>
             </div>
