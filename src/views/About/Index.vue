@@ -8,7 +8,7 @@
           <div class="md-layout-item md-size-100">
             <h2 class="title">Sobre o site</h2>
             <h3 class="md-body-2" style="font-size: 18px; font-weight: normal !important;">
-              Desafio proposto para a Fábrica de Software I, matéria pertencente a graduação de Engenheria de Software da Católica, desenvolvido por:<br>
+              Desafio proposto para a Fábrica de Software I, matéria pertencente a graduação de Engenharia de Software da Católica, desenvolvido por:<br>
               <ul>
                 <!-- <li><a target="_blank" href="https://www.linkedin.com/in/altieri-ricardo-d-01b657121/">Altiéri Ricardo Dalagnollo</a></li> -->
                 <li><a target="_blank" href="https://www.linkedin.com/in/esdras-xavier">Esdras Xavier</a></li>

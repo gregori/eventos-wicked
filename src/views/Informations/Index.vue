@@ -56,6 +56,15 @@
                   <strong>Haverá premiação em todas as categorias de 1º, 2º e 3º lugar.</strong>
                 </p>
                 <p>
+                  Os três primeiros colocados receberão troféus e um valor em dinheiro será de
+                  100% do valor da inscrição dos projetos, excluídos os custos bancários. Assim, a divisão se dará da seguinte forma:
+                </p>
+                <ul>
+                  <li>1º Lugar: 50% do valor das inscrições.</li>
+                  <li>2º Lugar: 30% do valor das inscrições.</li>
+                  <li>3º Lugar: 20% do valor das inscrições.</li>
+                </ul>
+                <p>
                   <img src="/img/trofeu.jpg" alt="Premiação summit wickedbotz" style="height: 260px !important; width: 210px !important;" class="center img-responsive" border="1">
                 </p>
                 <p>
@@ -65,7 +74,7 @@
             </md-tab>
             <md-tab id="tab-transp" md-label="Estadia" md-icon="hotel">
               <h1>Alojamento</h1>
-              <h3>Haverá alojamento, local há definir.</h3>
+              <h3>Haverá alojamento, local a definir.</h3>
               <p></p>
               <h1>Hotéis</h1>
               <h4>Hotel Ibis Joinville</h4>
@@ -101,12 +110,12 @@
               <h4>O valor da inscrição é de R$ 25,00 por participante e R$ 50,00 por projeto (robô)</h4>
 
               <p>
-                <b>&nbsp;Obs.:</b> Após a data <b>31/10</b> às inscrições terão outros valores R$50,00 por participante e R$100,00 por projeto (robô),
-              <span style="color: red; font-weight: bold"> não poderá ser inscrito após o dia 11/11 </span></p> <br />
+                <b>&nbsp;Obs.:</b>
+              <span style="color: red; font-weight: bold"> As inscrições encerram-se dia 11/11.</span></p> <br>
               <p>
-                Acesso ao público para ver as competições é <strong>gratuíto.</strong> <br /><br />
+                O acesso ao público espectador é <strong>gratuíto.</strong> <br /><br />
               </p>
-              <h5 style="color: red; font-weight: bold">O pagamento das inscrições dos participantes e dos projetos será através de um boleto bancário único, emitido após devidamente preenchimento do formulário de inscrição.</h5>
+              <h5 style="color: red; font-weight: bold">O pagamento das inscrições dos participantes e dos projetos será através de um boleto bancário único, emitido após o devido preenchimento do formulário de inscrição.</h5>
             <br><br>
             </md-tab>
           </md-tabs>
