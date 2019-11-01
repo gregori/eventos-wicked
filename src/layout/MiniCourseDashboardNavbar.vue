@@ -54,7 +54,7 @@
                 <p class="hidden-lg">Facebook</p>
                 <md-tooltip md-direction="bottom">Facebook</md-tooltip>
               </md-list-item>
-              <md-list-item v-if="!loggedIn">
+              <!--<md-list-item v-if="!loggedIn">
                 <router-link :to="{ name: 'login.index' }">
                   <span class="negrito">Entrar</span>
                 </router-link>
@@ -63,7 +63,7 @@
                 <router-link :to="{ name: 'minicourse.register.index' }">
                   <span class="negrito">Registrar</span>
                 </router-link>
-              </md-list-item>
+              </md-list-item>-->
               <md-list-item href="javascript:(0)" target="_blank" style="vertical-align: middle;" v-if="loggedIn">
                 <router-link :to="{ name: 'minicourse.dashboard.index' }">
                   <i class="fas fa-user fa-2x"></i>
