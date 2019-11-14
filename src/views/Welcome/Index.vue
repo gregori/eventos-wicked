@@ -49,7 +49,7 @@
                   Grupo Estudantil de Robótica Móvel - GERM. A competição irá acontecer nos dias 15, 16 e 17 de Novembro de 2019,
                   ocorrendo das 9:00 às 21:00 no campus da Católica de Santa Catarina em Joinville, bloco A.
                   <br />
-                  <router-link :to="{name: 'categories.index'}">Clique aqui</router-link>para ver mais informações sobre as categorias
+                  <router-link :to="{name: 'categories.index'}">Clique aqui</router-link> para ver mais informações sobre as categorias
                   <br />
                   <br />
                   <center>

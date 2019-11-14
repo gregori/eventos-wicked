@@ -7,13 +7,16 @@
         <div class="md-layout md-size-18 fix-content">
           <div class="md-layout-item mx-auto">
             <h1 class="title" style="font-size: 36px;">Categorias</h1>
+            <h3>Total de Projetos: 94</h3>
           </div>
           <div class="md-layout-item md-size-100 ">
             <ul v-for="item in getCategories" :key="item.id">
+              <div v-if="item.enabled">
               <h3 style="margin-left: -4vh;" > {{ item.label }} </h3>
-              <li v-for="categorie in item.categorias" :key="categorie.id">
-                {{ categorie.name }} <span v-if="categorie.ruleContent != ''"> - <a :href='categorie.ruleContent' target='_blank'>Regras</a></span>
+              <li v-for="category in item.categorias" :key="category.id">
+                {{ category.name }} <span v-if="category.participants"> - Inscritos: {{ category.participants }}</span><span v-if="category.ruleContent != ''"> - <a :href='category.ruleContent' target='_blank'>Regras</a></span>
               </li>
+              </div>
             </ul>
             <!--Change Url-->
             <br><h4>Regras Gerais <a href='/rules/geral_rules.pdf' target='_blank'>clique aqui.</a></h4>
